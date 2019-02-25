@@ -1,33 +1,88 @@
 .App {
   text-align: center;
+  font-family: 'Avenir';
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.search-container{
+  margin-top: 6em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.title-text{
+  font-family: 'Avenir', sans-serif;
+  font-size: 2.5em;
 }
 
-.App-link {
-  color: #61dafb;
+.term-name{
+  color: #D1632B;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#nav{
+  margin-top: 1em;
+}
+
+.field.ui.input.focus.term{
+  width: 45em;
+  margin-right: -12px;
+}
+
+.ui.button.black{
+  margin-left: -5px;
+  background-color: #16496B;
+  font-family: 'Avenir'. sans-serif;
+}
+
+.ui.form{
+  margin-left: 5.5em;
+  margin-top: 10px;
+}
+
+.link{
+  color: black;
+  font-weight: 550;
+  font-size: 15px;
+}
+
+.link.review{
+  margin-left: 3em;
+  margin-top: 1.2em;
+}
+
+.box{
+  text-align: left;
+  margin-left: 7em;
+  margin-right: 60em;
+  margin-top: 5em;
+  margin-bottom: 5em;
+  width: 1fr;
+  height: 0.5fr;
+  position: relative;
+}
+
+/* .box:after{
+  padding-bottom: 100%;
+  display: block;
+} */
+
+.search-img{
+  width:700px;
+  height: 350px;
+  object-fit: cover;
+  filter: opacity(50%) grayscale(30%);
+}
+
+.search-text{
+  position: absolute;
+  top: 10%;
+  left: 3%;
+  width: 100%;
+  font-family: 'Avenir',sans-serif;
+  color:white;
+}
+
+h2.search-text{
+  font-size:300%;
+  font-weight: 500;
+  background-color: rgba(0,0,0,0.6);
+  width: 55%;
+  padding-left: 10px;
 }
