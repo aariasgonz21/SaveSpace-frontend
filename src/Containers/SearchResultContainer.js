@@ -5,6 +5,7 @@ class SearchResultContainer extends Component {
 
 
   render() {
+    console.log(this.props.search);
     let searchResults = this.props.search.results.map(result => {
       return <SearchResults key={result.id} result={result}/>
     })

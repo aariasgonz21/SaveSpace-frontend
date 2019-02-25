@@ -67,7 +67,7 @@
   width:700px;
   height: 350px;
   object-fit: cover;
-  filter: opacity(50%) grayscale(30%);
+  filter: opacity(70%) grayscale(30%);
 }
 
 .search-text{

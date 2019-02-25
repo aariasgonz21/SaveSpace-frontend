@@ -8,7 +8,7 @@ class App extends Component {
 
   state = {
     term: "",
-    location: "",
+    location: "Queens",
     results: []
   }
 
@@ -37,7 +37,7 @@ class App extends Component {
     return (
       <div className="App">
         <Nav changeHandler={this.changeHandler} submitHandler={this.submitHandler} term={this.state.term} location={this.state.location} />
-        <SearchResultContainer  search={this.state}/>
+        <SearchResultContainer search={this.state}/>
       </div>
     );
   }
