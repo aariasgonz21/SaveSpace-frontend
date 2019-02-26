@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
-import Nav from './Components/Nav'
-import SearchResultContainer from './Containers/SearchResultContainer'
 import './App.css';
+import SearchResultContainer from './Containers/SearchResultContainer'
+import Home from './Containers/Home'
+import ProfilePage from './Containers/ProfilePage'
+import EstablishmentPage from './Containers/EstablishmentPage'
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 class App extends Component {
-
   state = {
     term: "",
     location: "Queens",
@@ -13,34 +15,54 @@ class App extends Component {
   }
 
   changeHandler = (e) => {
-  this.setState({
-    [e.target.name]: e.target.value
-  })
-}
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
 
+  // fetch request for form
   submitHandler = (e) => {
     e.preventDefault();
+    console.log("in submit handler");
+    this.props.history.push('/search');
     let option = {
       method: 'POST',
       headers:{
         'content-type': "application/json",
       },
-      body: JSON.stringify(this.state)
+      body: JSON.stringify({
+        term: this.state.term,
+        location: this.state.location
+      })
     }
     fetch('http://localhost:3001/api/v1/establishments', option)
       .then(res => res.json())
       .then(data => this.setState({results: data}))
- }
+  }
 
   render() {
-    console.log(this.state.results)
+    //<Route component={NoMatch} />
+    console.log(this.props);
     return (
-      <div className="App">
-        <Nav changeHandler={this.changeHandler} submitHandler={this.submitHandler} term={this.state.term} location={this.state.location} />
-        <SearchResultContainer search={this.state}/>
-      </div>
+        <div>
+          <Switch>
+            <Route
+              exact path="/"
+              render={(props) => <Home {...props} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler}/>} />
+            <Route
+              path="/profile/:userId"
+              render={(props) => <ProfilePage {...props} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler}/>}/>
+            <Route
+              path="/search"
+              render={(props) => <SearchResultContainer {...props} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler}
+              /> }/>
+            <Route
+              path="/establishments/:establishmentId"
+              render={(props) => <EstablishmentPage {...props} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler}/>} />
+          </Switch>
+        </div>
+
     );
   }
 }
-
-export default App;
+export default withRouter(App);

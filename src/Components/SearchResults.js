@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 class SearchResults extends Component {
 
   render() {
-    const {categories} = this.props
-    console.log(categories);
+    const {categories} = this.props.result
     return (
       <div className="box">
         <img className="search-img" src={this.props.result.image_url}/>
