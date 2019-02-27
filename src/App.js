@@ -57,8 +57,14 @@ class App extends Component {
               render={(props) => <SearchResultContainer {...props} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler}
               /> }/>
             <Route
-              path="/establishments/:establishmentId"
-              render={(props) => <EstablishmentPage {...props} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler}/>} />
+              path="/establishments/:id"
+              render={(props) => {
+                let id = props.match.params.id
+                let establishment = this.state.results.find(result => result.id === id)
+
+                return <EstablishmentPage {...props} establishment={establishment} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler}/>
+              }}/>
+
           </Switch>
         </div>
 
