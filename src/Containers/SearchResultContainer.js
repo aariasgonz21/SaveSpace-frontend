@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import SearchResults from '../Components/SearchResults'
 import Nav from '../Components/Nav'
-import { Route, Switch } from 'react-router-dom';
+//import { Route, Switch } from 'react-router-dom';
 
 class SearchResultContainer extends Component {
 

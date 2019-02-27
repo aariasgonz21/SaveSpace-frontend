@@ -4,14 +4,15 @@ import SearchResultContainer from './Containers/SearchResultContainer'
 import Home from './Containers/Home'
 import ProfilePage from './Containers/ProfilePage'
 import EstablishmentPage from './Containers/EstablishmentPage'
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
 class App extends Component {
   state = {
     term: "",
     location: "Queens",
-    results: []
+    results: [],
+    establishment:{}
   }
 
   changeHandler = (e) => {
@@ -40,9 +41,15 @@ class App extends Component {
       .then(data => this.setState({results: data}))
   }
 
+  //reviewSubmitHandler
+  reviewSubmitHandler = (e, reviewObj) => {
+    e.preventDefault();
+    alert("it's been submitted lad");
+  }
+
   render() {
     //<Route component={NoMatch} />
-    console.log(this.props);
+    //console.log(this.props);
     return (
         <div>
           <Switch>
@@ -61,8 +68,9 @@ class App extends Component {
               render={(props) => {
                 let id = props.match.params.id
                 let establishment = this.state.results.find(result => result.id === id)
-
-                return <EstablishmentPage {...props} establishment={establishment} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler}/>
+                //localStorage.setItem("establishment", JSON.stringify(establishment))
+                //console.log(this.state.results)
+                return <EstablishmentPage {...props} establishment={this.state.establishment} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler} reviewSubmitHandler={this.reviewSubmitHandler}/>
               }}/>
 
           </Switch>

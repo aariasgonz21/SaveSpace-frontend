@@ -9,7 +9,7 @@ class SearchResults extends Component {
     return (
       <Link to={`/establishments/${this.props.result.id}`}>
       <div className="box">
-        <img className="search-img" src={this.props.result.image_url}/>
+        <img className="search-img" alt={this.props.result.name} src={this.props.result.image_url}/>
         <h2 className="search-text">{this.props.result.name}</h2>
       </div>
       </Link>
