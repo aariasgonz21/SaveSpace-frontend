@@ -11,7 +11,8 @@ class EstablishmentPage extends Component {
 
   render() {
     console.log("we made it lads")
-    console.log(this.props.establishment)
+    let establishment = JSON.parse(localStorage.getItem('establishment'))
+
     return (
       <div>
         <Nav changeHandler={this.props.changeHandler} submitHandler={this.props.submitHandler} term={this.props.search.term} location={this.props.search.location} />

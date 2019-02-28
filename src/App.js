@@ -12,7 +12,8 @@ class App extends Component {
     term: "",
     location: "Queens",
     results: [],
-    establishment:{}
+    establishment:{},
+    establishment_reviews:[]
   }
 
   changeHandler = (e) => {
@@ -44,39 +45,60 @@ class App extends Component {
   //reviewSubmitHandler
   reviewSubmitHandler = (e, reviewObj) => {
     e.preventDefault();
-    alert("it's been submitted lad");
+    let option = {
+      method: 'POST',
+      headers:{
+        'content-type': "application/json",
+      },
+      body: JSON.stringify({
+        review:{
+          yelp_id: this.state.establishment.id,
+          name: reviewObj.name,
+          women_rating:reviewObj.women_rating,
+          poc_rating:reviewObj.poc_rating,
+          lgbtq_rating: reviewObj.lgbtq_rating,
+          review: reviewObj.review
+        }
+      })
+    }
+    fetch('http://localhost:3001/api/v1/reviews', option)
+      .then(res => res.json())
+      .then(data => console.log(data))
+  }
+
+  clickHandler = (e, searchObj) => {
+    let id = searchObj.id
+    let establishment = this.state.results.find(result => result.id === id)
+    this.setState({
+      establishment: establishment
+    })
+    this.props.history.push(`/establishments/${establishment.id}`)
   }
 
   render() {
-    //<Route component={NoMatch} />
-    //console.log(this.props);
     return (
-        <div>
-          <Switch>
-            <Route
-              exact path="/"
-              render={(props) => <Home {...props} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler}/>} />
-            <Route
-              path="/profile/:userId"
-              render={(props) => <ProfilePage {...props} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler}/>}/>
-            <Route
-              path="/search"
-              render={(props) => <SearchResultContainer {...props} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler}
-              /> }/>
-            <Route
-              path="/establishments/:id"
-              render={(props) => {
-                let id = props.match.params.id
-                let establishment = this.state.results.find(result => result.id === id)
-                //localStorage.setItem("establishment", JSON.stringify(establishment))
-                //console.log(this.state.results)
-                return <EstablishmentPage {...props} establishment={this.state.establishment} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler} reviewSubmitHandler={this.reviewSubmitHandler}/>
-              }}/>
-
-          </Switch>
-        </div>
-
-    );
-  }
+      <div>
+        <Switch>
+          <Route
+            exact path="/"
+            render={(props) => <Home {...props} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler}/>} />
+          <Route
+            path="/profile/:userId"
+            render={(props) => <ProfilePage {...props} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler}/>}/>
+          <Route
+            path="/search"
+            render={(props) => <SearchResultContainer {...props} search={this.state} changeHandler={this.changeHandler} clickHandler={this.clickHandler} submitHandler={this.submitHandler}
+            /> }/>
+          <Route
+            path="/establishments/:id"
+            render={(props) => {
+              return <EstablishmentPage {...props} establishment={this.state.establishment} search={this.state} changeHandler={this.changeHandler} submitHandler={this.submitHandler} reviewSubmitHandler={this.reviewSubmitHandler}/>
+            }}/>
+        </Switch>
+      </div>
+  );
+}
+    //<Route component={NoMatch} />
+    //localStorage.setItem("establishment", JSON.stringify(this.state.establishment)
 }
 export default withRouter(App);
