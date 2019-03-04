@@ -14,27 +14,27 @@ class App extends Component {
     results: [],
     establishment:{},
     establishment_reviews:[],
-    user: {}
+    user: {},
+    logged_in: false
   }
 
-  // componentDidMount() {
-  //   if (localStorage.getItem("token")) {
-  //     let token = localStorage.getItem("token");
-  //     fetch("http://localhost:3001/api/v1/user", {
-  //       headers: {
-  //         "content-type": "application/json",
-  //         Accepts: "application/json",
-  //         Authorization: `${token}`
-  //       }
-  //     })
-  //       .then(resp => resp.json())
-  //       .then(data =>
-  //         data.error ? alert(`Must Log In`) : this.setState({ user: data.user })
-  //       );
-  //   } else {
-  //     this.props.history.push("/");
-  //   }
-  // }
+  componentDidMount() {
+    if (localStorage.getItem("token")) {
+      let token = localStorage.getItem("token");
+      let option = {
+        headers: {
+          "content-type": "application/json",
+          Accepts: "application/json",
+          Authorization: `${token}`
+        }
+      }
+      fetch("http://localhost:3001/api/v1/users", option)
+        .then(resp => resp.json())
+        .then(data => this.setState({ user: data.user }))
+    } else {
+      this.props.history.push("/");
+    }
+  }
   //-------------------------------//
   changeHandler = (e) => {
     this.setState({
@@ -67,30 +67,29 @@ class App extends Component {
     e.preventDefault();
     if (localStorage.getItem("token")) {
       let token = localStorage.getItem("token");
-      console.log(token)
-      // let option = {
-      //   method: 'POST',
-      //   headers:{
-      //     //add auth headers
-      //     'content-type': "application/json",
-      //     Authorization: `${token}`
-      //   },
-      //   body: JSON.stringify({
-      //     review:{
-      //       yelp_id: this.state.establishment.id,
-      //       name: reviewObj.name,
-      //       women_rating:reviewObj.women_rating,
-      //       poc_rating:reviewObj.poc_rating,
-      //       lgbtq_rating: reviewObj.lgbtq_rating,
-      //       review: reviewObj.review
-      //     }
-      //   })
-      // }
-      // fetch('http://localhost:3001/api/v1/reviews', option)
-      //   .then(res => res.json())
-      //   .then(data => this.setState({
-      //     establishment_reviews: [data, ...this.state.establishment_reviews]
-      //   }))
+      let option = {
+        method: 'POST',
+        headers:{
+          //add auth headers
+          'content-type': "application/json",
+          Authorization: `${token}`
+        },
+        body: JSON.stringify({
+          review:{
+            yelp_id: this.state.establishment.id,
+            name: reviewObj.name,
+            women_rating:reviewObj.women_rating,
+            poc_rating:reviewObj.poc_rating,
+            lgbtq_rating: reviewObj.lgbtq_rating,
+            review: reviewObj.review
+          }
+        })
+      }
+      fetch('http://localhost:3001/api/v1/reviews', option)
+        .then(res => res.json())
+        .then(data => this.setState({
+          establishment_reviews: [data, ...this.state.establishment_reviews]
+        }))
       }
     else {
       alert("Please Login to Submit a Review")
@@ -129,6 +128,7 @@ signupHandler = (e, signupObj) => {
     .then(res => res.json())
     .then(data => {
       this.setState({user: data.user})
+      this.setState({logged_in: true})
       localStorage.setItem('token', data.jwt)
       this.props.history.push(`/profile/${data.user.id}`)
     })
@@ -136,7 +136,33 @@ signupHandler = (e, signupObj) => {
 
 //-----------------------------//
 loginHandler = (e, userObj) => {
+  e.preventDefault();
+  let option = {
+    method: 'POST',
+    headers:{
+      'content-type': "application/json",
+    },
+    body: JSON.stringify({
+      user: {
+        username: userObj.username,
+        password: userObj.password
+      }
+    })
+  }
+  fetch('http://localhost:3001/api/v1/login', option)
+  .then(res => res.json())
+  .then(data => {
+    this.setState({user: data.user})
+    this.setState({logged_in: true})
+    localStorage.setItem('token', data.jwt)
+    this.props.history.push(`/profile/${data.user.id}`)
+  })
+}
 
+//-----------------------------//
+logoutHandler = () => {
+  localStorage.removeItem('token')
+  window.location.reload();
 }
 
   render() {
@@ -151,6 +177,7 @@ loginHandler = (e, userObj) => {
             changeHandler={this.changeHandler}
             submitHandler={this.submitHandler}
             loginHandler={this.loginHandler}
+            logoutHandler={this.logoutHandler}
             signupHandler={this.signupHandler}/>} />
           <Route
             path="/profile/:userId"

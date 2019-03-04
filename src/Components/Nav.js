@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom'
 
 class Nav extends Component {
 
+  // profileLink = () => {
+  //
+  // }
+
   render() {
     return (
       <div className="ui grid" id="nav">
