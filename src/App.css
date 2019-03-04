@@ -23,7 +23,8 @@
 }
 
 .search{
-  margin-left: 12em;
+  margin-left: 4em;
+  margin-right: 4em;
 }
 
 .title-text{
@@ -129,11 +130,17 @@ h3.search-text{
   .main-title {
     font-size: 4em;
   }
+  .home-prompt{
+    font-size: 1em;
+  }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 768px) {
   .main-title {
     font-size: 6em;
+  }
+  .home-prompt{
+    font-size:
   }
 }
 

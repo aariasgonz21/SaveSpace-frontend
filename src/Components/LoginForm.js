@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 
 class LoginForm extends Component {
 
-  state={
-
+  state = {
+    username: '',
+    password: ''
   }
 
   render() {
@@ -15,14 +16,14 @@ class LoginForm extends Component {
                 <label>Username</label>
                 <div className="ui left icon input">
                   <input type="text" placeholder="Username" value={this.state.username}
-                  onChange={this.props.changeHandler}/>
+                  onChange={this.changeHandler}/>
                   <i className="user icon"></i>
                 </div>
               </div>
               <div className="field">
                 <label>Password</label>
                 <div className="ui left icon input">
-                  <input type="password" value={this.state.password} onChange={this.props.changeHandler}/>
+                  <input type="password" value={this.state.password} onChange={this.changeHandler}/>
                   <i className="lock icon"></i>
                 </div>
               </div>
