@@ -4,7 +4,6 @@
 import React, { Component } from 'react';
 import SearchResults from '../Components/SearchResults'
 import Nav from '../Components/Nav'
-//import { Route, Switch } from 'react-router-dom';
 
 class SearchResultContainer extends Component {
 
@@ -15,7 +14,6 @@ class SearchResultContainer extends Component {
   }
 
   render() {
-    //console.log(this.props.search);
     let searchResults = this.props.search.results.map(result => {
       return <SearchResults key={result.id} result={result} clickHandler={this.props.clickHandler}/>
     })

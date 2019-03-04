@@ -72,7 +72,7 @@
 
 .search-text{
   position: absolute;
-  top: 10%;
+  top: 1em;
   left: 3%;
   width: 100%;
   font-family: 'Avenir',sans-serif;
@@ -82,7 +82,16 @@
 h2.search-text{
   font-size:300%;
   font-weight: 500;
+  margin-top: -0.7em;
   background-color: rgba(0,0,0,0.6);
   width: 55%;
   padding-left: 10px;
+}
+
+h3.search-text{
+  font-size:150%;
+  margin-top: 8em;
+  padding-left: 10px;
+  width: 55%;
+  background-color: rgba(0,0,0,0.6);
 }

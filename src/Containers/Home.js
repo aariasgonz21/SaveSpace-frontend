@@ -4,16 +4,30 @@
 // 2. SearchForm
 
 import React, { Component } from 'react';
-import Nav from '../Components/Nav'
+import SearchForm from '../Components/SearchForm'
+import LoginForm from '../Components/LoginForm'
+import SignUpForm from '../Components/SignUpForm'
+import Popup from "reactjs-popup";
 
 class Home extends Component {
 
   render() {
-    console.log(this.props);
     return (
       <div>
-        <Nav changeHandler={this.props.changeHandler} term={this.props.search.term} location={this.props.search.location} submitHandler={this.props.submitHandler}/>
-        <h1>Home</h1>
+        <Popup trigger={
+            <div className="ui button" onClick> Login </div>} modal
+            position="right center">
+            <div>{<LoginForm changeHandler={this.props.changeHandler} loginHandler={this.props.loginHandler}/>}</div>
+        </Popup>
+
+        <Popup trigger={
+            <div className="ui button" onClick> Sign Up </div>} modal
+            position="right center">
+            <div>{<SignUpForm changeHandler={this.props.changeHandler} signupHandler={this.props.signupHandler}/>}</div>
+        </Popup>
+        
+        <h1>SaveSpace</h1>
+        <SearchForm changeHandler={this.props.changeHandler} term={this.props.term} location={this.props.location} submitHandler={this.props.submitHandler}/>
       </div>
     );
   }
