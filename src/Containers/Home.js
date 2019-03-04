@@ -25,9 +25,8 @@ class Home extends Component {
             position="right center">
             <div>{<SignUpForm changeHandler={this.props.changeHandler} signupHandler={this.props.signupHandler}/>}</div>
         </Popup>
-        
-        <h1>SaveSpace</h1>
-        <SearchForm changeHandler={this.props.changeHandler} term={this.props.term} location={this.props.location} submitHandler={this.props.submitHandler}/>
+          <h1 className="main-title">SaveSpace<span id="nyc">nyc</span></h1>
+          <SearchForm className="search" changeHandler={this.props.changeHandler} term={this.props.term} location={this.props.location} submitHandler={this.props.submitHandler}/>
       </div>
     );
   }

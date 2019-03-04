@@ -7,6 +7,22 @@
   margin-top: 6em;
 }
 
+.main-title{
+  font-family: 'Avenir', sans-serif;
+  font-size: 12em;
+  text-align: center;
+  margin-top: 1em;
+}
+
+
+#nyc{
+  font-size: 0.2em;
+}
+
+.search{
+  margin-left: 12em;
+}
+
 .title-text{
   font-family: 'Avenir', sans-serif;
   font-size: 2.5em;
@@ -94,4 +110,24 @@ h3.search-text{
   padding-left: 10px;
   width: 55%;
   background-color: rgba(0,0,0,0.6);
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 600px) {
+  .main-title {
+    font-size: 4em;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .main-title {
+    font-size: 6em;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .main-title {
+    font-size: 8em;
+  }
 }
