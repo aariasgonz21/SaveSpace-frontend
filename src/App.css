@@ -11,9 +11,12 @@
   font-family: 'Avenir', sans-serif;
   font-size: 12em;
   text-align: center;
-  margin-top: 1em;
+  padding-top: 1em;
 }
 
+.nav-buttons{
+  float: right;
+}
 
 #nyc{
   font-size: 0.2em;
@@ -28,6 +31,14 @@
   font-size: 2.5em;
 }
 
+.home-prompt{
+  text-align: center;
+  padding-top: 1.5em;
+}
+
+.home-prompt-slide{
+
+}
 .term-name{
   color: #D1632B;
 }
