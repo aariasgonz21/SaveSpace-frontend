@@ -16,7 +16,7 @@ class LoginForm extends Component {
   render() {
     return (
       <div>
-        <h2>Login</h2>
+        <h2>Login to Find and Rate a SaveSpace</h2>
           <form className="ui form" onSubmit={(e) => {this.props.loginHandler(e, this.state)}}>
               <div className="field">
                 <label>Username</label>

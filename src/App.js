@@ -23,14 +23,14 @@ class App extends Component {
       let token = localStorage.getItem("token");
       let option = {
         headers: {
-          "content-type": "application/json",
+          "Content-Type": "application/json",
           Accepts: "application/json",
-          Authorization: `${token}`
+          Authorization: `Bearer ${token}`
         }
       }
-      fetch("http://localhost:3001/api/v1/users", option)
+      fetch("http://localhost:3001/api/v1/profile", option)
         .then(resp => resp.json())
-        .then(data => this.setState({ user: data.user }))
+        .then(data => console.log(data) || this.setState({ user: data.user }))
     } else {
       this.props.history.push("/");
     }
@@ -45,8 +45,6 @@ class App extends Component {
   //-------------------------------//
   submitHandler = (e) => {
     e.preventDefault();
-    console.log("in submit handler");
-    this.props.history.push('/search');
     let option = {
       method: 'POST',
       headers:{
@@ -59,7 +57,15 @@ class App extends Component {
     }
     fetch('http://localhost:3001/api/v1/establishments', option)
     .then(res => res.json())
-    .then(data => this.setState({results: data}))
+    .then(data => {
+      console.log("in submit handler");
+      this.setState({results: data}, ()=>this.props.history.push('/search'))
+     })
+     .catch(console.error)
+  }
+  //-------------------------------//
+  persistEst = (data) => {
+    this.setState({establishment:data})
   }
 
   //-------------------------------//
@@ -70,9 +76,8 @@ class App extends Component {
       let option = {
         method: 'POST',
         headers:{
-          //add auth headers
-          'content-type': "application/json",
-          Authorization: `${token}`
+          'Content-Type': "application/json",
+          Authorization: `Bearer ${token}`
         },
         body: JSON.stringify({
           review:{
@@ -166,7 +171,6 @@ logoutHandler = () => {
 }
 
   render() {
-    console.log(this.state.user)
     return (
       <div>
         <Switch>
@@ -180,7 +184,7 @@ logoutHandler = () => {
             logoutHandler={this.logoutHandler}
             signupHandler={this.signupHandler}/>} />
           <Route
-            path="/profile/:userId"
+            path="/profile"
             render={(props) => <ProfilePage {...props}
             search={this.state}
             changeHandler={this.changeHandler}
@@ -198,7 +202,9 @@ logoutHandler = () => {
             render={(props) => {
               return <EstablishmentPage {...props} establishment={this.state.establishment} establishment_reviews={this.state.establishment_reviews} search={this.state}
               changeHandler={this.changeHandler}
-              submitHandler={this.submitHandler} reviewSubmitHandler={this.reviewSubmitHandler}/>
+              submitHandler={this.submitHandler} reviewSubmitHandler={this.reviewSubmitHandler}
+              loginHandler={this.loginHandler}
+              persistEst={this.persistEst}/>
             }}/>
         </Switch>
       </div>

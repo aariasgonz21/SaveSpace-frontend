@@ -8,12 +8,18 @@ import SearchForm from '../Components/SearchForm'
 import LoginForm from '../Components/LoginForm'
 import SignUpForm from '../Components/SignUpForm'
 import Popup from "reactjs-popup";
+import { Link } from 'react-router-dom'
 
 class Home extends Component {
 
   loginToggle = () => {
     if (localStorage.getItem("token")){
-      return <button className="ui button nav-buttons" onClick={this.props.logoutHandler}>Log Out</button>
+      return(
+        <div className="nav-buttons">
+          <h3 className="link review" onClick={this.props.logoutHandler}>Log Out</h3>
+          <Link to="/profile" className="link review">Your Profile</Link>
+        </div>
+      )
     }
     else {
       return(

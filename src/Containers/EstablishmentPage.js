@@ -5,25 +5,52 @@
 import React, { Component } from 'react';
 import Popup from "reactjs-popup";
 import ReviewForm from '../Components/ReviewForm';
-import Nav from '../Components/Nav'
-import ReviewContainer from './ReviewContainer'
+import LoginForm from '../Components/LoginForm';
+import Nav from '../Components/Nav';
+import ReviewContainer from './ReviewContainer';
 
 class EstablishmentPage extends Component {
 
   // state = {
-  //
+  //   establishment: {}
   // }
 
   componentDidMount(){
     console.log();
+    if (localStorage.getItem("token")) {
+      let token = localStorage.getItem("token");
+        let options = {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          }
+        }
 
-    fetch(`http://localhost:3001/api/v1${this.props.match.url}`)
+    fetch(`http://localhost:3001/api/v1${this.props.match.url}`, options)
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => this.props.persistEst(data))
+  }
+  else{
+    alert('just login, man.')
+  }
+}
+
+  reviewToggle = () => {
+    if (localStorage.getItem("token")){
+      return(
+        <ReviewForm establishment={this.props.establishment} reviewSubmitHandler={this.props.reviewSubmitHandler}/>
+      )
+    }
+    else{
+      return(
+        <LoginForm changeHandler={this.props.changeHandler} loginHandler={this.props.loginHandler}/>
+      )
+    }
   }
 
   render() {
-    console.log("we made it lads")
+    //console.log("we made it lads")
+
     console.log(this.props.establishment_reviews);
     //let establishment = JSON.parse(localStorage.getItem('establishment'))
 
@@ -35,12 +62,12 @@ class EstablishmentPage extends Component {
         <img src={this.props.establishment.image_url} alt="main"/>
         <h1>Reviews</h1>
         <ReviewContainer reviews={this.props.establishment_reviews}/>
-        
+
         <Popup trigger={
             <div className="ui bottom attached button" onClick>
             <i className='add icon'></i> Add Review </div>} modal
             position="right center">
-            <div>{<ReviewForm establishment={this.props.establishment} reviewSubmitHandler={this.props.reviewSubmitHandler}/>}</div>
+            <div>{this.reviewToggle()}</div>
         </Popup>
       </div>
     );
