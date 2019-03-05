@@ -82,6 +82,7 @@ class App extends Component {
         body: JSON.stringify({
           review:{
             yelp_id: this.state.establishment.id,
+            user_id:this.state.user.id,
             name: reviewObj.name,
             women_rating:reviewObj.women_rating,
             poc_rating:reviewObj.poc_rating,
