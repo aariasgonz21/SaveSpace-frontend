@@ -59,13 +59,19 @@ class App extends Component {
     .then(res => res.json())
     .then(data => {
       console.log("in submit handler");
-      this.setState({results: data}, ()=>this.props.history.push('/search'))
+      this.setState({results: data}, () => this.props.history.push('/search'))
      })
      .catch(console.error)
   }
   //-------------------------------//
-  persistEst = (data) => {
-    this.setState({establishment:data})
+  persistData = (data) => {
+    console.log(data)
+    if(data.name){
+      this.setState({establishment:data})
+    }
+    else{
+      this.setState({user:data})
+    }
   }
 
   //-------------------------------//
@@ -189,7 +195,8 @@ logoutHandler = () => {
             render={(props) => <ProfilePage {...props}
             search={this.state}
             changeHandler={this.changeHandler}
-            submitHandler={this.submitHandler}/>}/>
+            submitHandler={this.submitHandler}
+            persistData={this.persistData}/>}/>
           <Route
             path="/search"
             render={(props) => <SearchResultContainer {...props}
@@ -205,7 +212,7 @@ logoutHandler = () => {
               changeHandler={this.changeHandler}
               submitHandler={this.submitHandler} reviewSubmitHandler={this.reviewSubmitHandler}
               loginHandler={this.loginHandler}
-              persistEst={this.persistEst}/>
+              persistData={this.persistData}/>
             }}/>
         </Switch>
       </div>

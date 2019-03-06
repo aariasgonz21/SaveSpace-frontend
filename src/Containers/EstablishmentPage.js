@@ -28,7 +28,7 @@ class EstablishmentPage extends Component {
 
     fetch(`http://localhost:3001/api/v1${this.props.match.url}`, options)
     .then(res => res.json())
-    .then(data => this.props.persistEst(data))
+    .then(data => this.props.persistData(data))
   }
   else{
     alert('just login, man.')

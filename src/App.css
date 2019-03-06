@@ -1,6 +1,9 @@
 .App {
   text-align: center;
-  font-family: 'Avenir';
+}
+
+.ui.grid{
+  font-family: 'Avenir', sans-serif
 }
 
 .search-container{
@@ -128,6 +131,26 @@ h3.search-text{
   background-color: rgba(0,0,0,0.6);
 }
 
+/*Profile */
+
+.profile-img{
+  width:45%;
+  margin-left: 14em;
+  margin-top: 8em;
+}
+
+.profile-name{
+  padding-top: 2.0em;
+  font-size: 5.5em;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.ui.divider{
+  width:8%;
+  height:5px;
+
+}
 /* Media Queries */
 
 @media only screen and (max-width: 600px) {
