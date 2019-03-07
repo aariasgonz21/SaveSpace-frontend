@@ -59,7 +59,7 @@ class Home extends Component {
           </div>
 
           <div className="about-us">
-            <h2 className="about-title">This is the story of 4 women of color and their experience bar hopping in College Park, Maryland.</h2>
+            <h2 className="about-title">This is the story of 3 women of color and their experience bar hopping in College Park, Maryland.</h2>
             <div className="about-p">
               <h3 className="about-p1">Ana, Chanel and Wuraola went to their first Technica and decided to go around the town and grab a beer. But each bar they passed by had a more unwelcoming vibe than the next. When they sat down the next day to decide on a project,</h3>
 
