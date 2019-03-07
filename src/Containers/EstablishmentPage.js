@@ -82,7 +82,7 @@ reviewSubmitHandler = (e, reviewObj) => {
   }
 
   render() {
-    console.log(this.props.match.url)
+    console.log(this.state.establishment)
 
     //console.log(this.props.establishment_reviews);
     //let establishment = JSON.parse(localStorage.getItem('establishment'))
@@ -91,10 +91,10 @@ reviewSubmitHandler = (e, reviewObj) => {
       <div>
         <Nav changeHandler={this.props.changeHandler} submitHandler={this.props.submitHandler} term={this.props.search.term} location={this.props.search.location} />
 
-        <h1>{this.state.establishment.name}</h1>
-        <img src={this.state.establishment.image_url} alt="main"/>
-        <h1>Reviews</h1>
-        <ReviewContainer user={this.props.user} reviews={this.state.reviews}/>
+        <img className="est-img" src={this.state.establishment.image_url} alt="main"/>
+        <h1 className="est-name">{this.state.establishment.name}</h1>
+        <div className="divider1"></div>
+
 
         <Popup trigger={
             <div className="ui bottom attached button" onClick>
@@ -102,6 +102,10 @@ reviewSubmitHandler = (e, reviewObj) => {
             position="right center">
             <div>{this.reviewToggle()}</div>
         </Popup>
+        <h1>Reviews</h1>
+        <ReviewContainer user={this.props.user} reviews={this.state.reviews}/>
+
+
       </div>
     );
   }
