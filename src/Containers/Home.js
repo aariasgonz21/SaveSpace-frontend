@@ -45,12 +45,15 @@ class Home extends Component {
     return (
       <div>
           {this.loginToggle()}
+          <img className="home-background" src='../savespace-hands2.svg' alt="background-img"/>
           <h1 className="main-title">SaveSpace<span id="nyc">nyc</span></h1>
           <div className="search">
             <SearchForm className="search" changeHandler={this.props.changeHandler} term={this.props.term} location={this.props.location} submitHandler={this.props.submitHandler}/>
           </div>
           <div>
             <h3 className="home-prompt">When you want to: <span className="home-prompt-slide">introduce your girlfriend that you met on HER to your parents</span></h3>
+            <h1 className="about-prompt">Wanna know our backstory?</h1>
+            <img id="down-arrow" src="../download.svg" alt="down arrow"/>
           </div>
       </div>
     );

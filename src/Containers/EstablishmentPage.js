@@ -82,8 +82,6 @@ reviewSubmitHandler = (e, reviewObj) => {
   }
 
   render() {
-    console.log(this.state.establishment)
-
     //console.log(this.props.establishment_reviews);
     //let establishment = JSON.parse(localStorage.getItem('establishment'))
 
@@ -102,7 +100,9 @@ reviewSubmitHandler = (e, reviewObj) => {
             position="right center">
             <div>{this.reviewToggle()}</div>
         </Popup>
-        <h1>Reviews</h1>
+        <h1 className="est-review-title">Reviews</h1>
+        <div className="divider2"></div>
+
         <ReviewContainer user={this.props.user} reviews={this.state.reviews}/>
 
 
