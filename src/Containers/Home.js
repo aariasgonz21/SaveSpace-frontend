@@ -9,6 +9,7 @@ import LoginForm from '../Components/LoginForm'
 import SignUpForm from '../Components/SignUpForm'
 import Popup from "reactjs-popup";
 import { Link } from 'react-router-dom'
+import Typist from 'react-typist';
 
 class Home extends Component {
 
@@ -16,8 +17,8 @@ class Home extends Component {
     if (localStorage.getItem("token")){
       return(
         <div className="nav-buttons">
-          <h3 className="link review" onClick={this.props.logoutHandler}>Log Out</h3>
-          <Link to="/profile" className="link review">Your Profile</Link>
+          <h3 className="login-btn" onClick={this.props.logoutHandler}>Log Out</h3>
+          <Link to="/profile" className="profile-btn">Your Profile</Link>
         </div>
       )
     }
@@ -25,13 +26,13 @@ class Home extends Component {
       return(
           <div className="nav-buttons">
           <Popup trigger={
-              <button className="ui button" onClick> Login </button>} modal
+              <h3 className="login-btn" onClick> Login </h3>} modal
               position="right center">
               <div>{<LoginForm changeHandler={this.props.changeHandler} loginHandler={this.props.loginHandler}/>}</div>
           </Popup>
 
           <Popup trigger={
-              <button className="ui button" onClick> Sign Up </button>} modal
+              <h3 className="login-btn" onClick> Sign Up </h3>} modal
               position="right center">
               <div>{<SignUpForm changeHandler={this.props.changeHandler} signupHandler={this.props.signupHandler}/>}</div>
           </Popup>
@@ -53,7 +54,22 @@ class Home extends Component {
           </div>
 
           <div>
-            <h3 className="home-prompt">When you want to: <span className="home-prompt-slide">introduce your girlfriend that you met on HER to your parents</span></h3>
+
+            <h3 className="home-prompt">When you want to:
+            <span className="home-prompt-slide">
+            <Typist>
+              <span>Take your new date from HER somewhere nice </span>
+                <Typist.Backspace count={50} delay={250} />
+                <span>Find out if a bar near you would make you feel comfortable</span>
+              <Typist.Backspace count={70} delay={250} />
+                <span>Check if your pizzeria is LGBTQ Friendly</span>
+                <Typist.Backspace count={100} delay={250} />
+                <span>See if your local sports bar will be great for girls football night</span>
+                <Typist.Backspace count={110} delay={250} />
+                <span>Check if your song request will be skipped to "comply with the audience"</span>
+                </Typist>
+              </span>
+            </h3>
             <h1 className="about-prompt">Wanna know our backstory?</h1>
             <img id="down-arrow" src="../download.svg" alt="down arrow"/>
           </div>
@@ -63,11 +79,11 @@ class Home extends Component {
             <div className="about-p">
               <h3 className="about-p1">Ana, Chanel and Wuraola went to their first Technica and decided to go around the town and grab a beer. But each bar they passed by had a more unwelcoming vibe than the next. When they sat down the next day to decide on a project,</h3>
 
-              <h3 className="about-p2"> Wura said, "What should we do our project on?".</h3>
+              <h3 className="about-p1"> Wura said, "What should we do our project on?".</h3>
 
-              <h3 className="about-p2">Chanel said, "We should make a project based on how we felt yesterday!".</h3>
+              <h3 className="about-p2">Chanel said, "We should make a project based on how we felt yesterday!"</h3>
 
-              <h3 className="about-p3">Ana said, "Aha! Let's call it <span>SaveSpace</span>"</h3>
+              <h3 className="about-p3">Ana said, "Aha! Let's call it SaveSpace"</h3>
             </div>
           </div>
       </div>

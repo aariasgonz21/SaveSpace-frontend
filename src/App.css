@@ -32,6 +32,22 @@
   float: right;
 }
 
+.login-btn:hover{
+  text-decoration: underline;
+}
+
+.profile-btn{
+  color:black;
+  font-family: 'Avenir', sans-serif;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.profile-btn:hover{
+  text-decoration: underline;
+  color: black;
+}
+
 .logo-icon{
   width: 40%;
   height: 40%;
@@ -55,13 +71,23 @@
 }
 
 
+.about-p2{
+  font-size: 1.7em;
+  width:50%;
+  margin-left: 10em;
+}
+
+span{
+  font-weight: 800;
+}
+
 #down-arrow{
   width:3%;
   margin-left:48%;
 }
 .about-prompt{
   font-family: 'Avenir';
-  margin-top: 8em;
+  margin-top: 7.5em;
   text-align: center;
   color: #AB5326;
 }
@@ -86,7 +112,7 @@
 }
 
 .home-prompt-slide{
-
+  color:#0F3F6A;
 }
 .term-name{
   color: #D1632B;
