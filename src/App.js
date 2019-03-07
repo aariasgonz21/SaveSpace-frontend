@@ -30,7 +30,7 @@ class App extends Component {
       }
       fetch("http://localhost:3001/api/v1/profile", option)
         .then(resp => resp.json())
-        .then(data => console.log(data) || this.setState({ user: data.user }))
+        .then(data => this.setState({ user: data.user }))
     } else {
       this.props.history.push("/");
     }
@@ -65,49 +65,19 @@ class App extends Component {
   }
   //-------------------------------//
   persistData = (data) => {
-    console.log(data)
-    if(data.name){
+    if(data.categories){
       this.setState({establishment:data})
     }
-    else{
+    else if(data.review_text){
+      this.setState({establishment_reviews: data})
+    }
+    else if(data.bio){
       this.setState({user:data})
     }
   }
 
   //-------------------------------//
-  reviewSubmitHandler = (e, reviewObj) => {
-    e.preventDefault();
-    if (localStorage.getItem("token")) {
-      let token = localStorage.getItem("token");
-      let option = {
-        method: 'POST',
-        headers:{
-          'Content-Type': "application/json",
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          review:{
-            yelp_id: this.state.establishment.id,
-            user_id:this.state.user.id,
-            name: reviewObj.name,
-            women_rating:reviewObj.women_rating,
-            poc_rating:reviewObj.poc_rating,
-            lgbtq_rating: reviewObj.lgbtq_rating,
-            review: reviewObj.review
-          }
-        })
-      }
-      fetch('http://localhost:3001/api/v1/reviews', option)
-        .then(res => res.json())
-        .then(data => this.setState({
-          establishment_reviews: [data, ...this.state.establishment_reviews]
-        }))
-      }
-    else {
-      alert("Please Login to Submit a Review")
-      this.props.history.push("/")
-    }
-  }
+
 
   //-------------------------------//
   clickHandler = (e, searchObj) => {
@@ -208,11 +178,12 @@ logoutHandler = () => {
           <Route
             path="/establishments/:id"
             render={(props) => {
-              return <EstablishmentPage {...props} establishment={this.state.establishment} establishment_reviews={this.state.establishment_reviews} search={this.state}
+              return <EstablishmentPage {...props}
+              search={this.state}
               changeHandler={this.changeHandler}
               submitHandler={this.submitHandler} reviewSubmitHandler={this.reviewSubmitHandler}
               loginHandler={this.loginHandler}
-              persistData={this.persistData}/>
+              user={this.state.user}/>
             }}/>
         </Switch>
       </div>

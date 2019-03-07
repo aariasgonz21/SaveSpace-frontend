@@ -44,7 +44,7 @@ class ProfilePage extends Component {
             <h1 className="profile-name">{this.state.user.first_name}</h1>
             <div className="ui divider"></div>
             <h1>Reviews</h1>
-              <ReviewContainer reviews={this.state.reviews}/>
+              <ReviewContainer user={this.state.user} reviews={this.state.reviews}/>
           </div>
         </div>
       </div>

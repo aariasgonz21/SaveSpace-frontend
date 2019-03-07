@@ -11,9 +11,11 @@ import ReviewContainer from './ReviewContainer';
 
 class EstablishmentPage extends Component {
 
-  // state = {
-  //   establishment: {}
-  // }
+  state = {
+    establishment: {},
+    reviews: [],
+    user: {}
+  }
 
   componentDidMount(){
     console.log();
@@ -25,20 +27,51 @@ class EstablishmentPage extends Component {
             Authorization: `Bearer ${token}`
           }
         }
-
     fetch(`http://localhost:3001/api/v1${this.props.match.url}`, options)
     .then(res => res.json())
-    .then(data => this.props.persistData(data))
+    .then(data => {
+      this.setState({establishment: data.establishment, reviews:
+        (data.reviews ? data.reviews : [])})
+    })
   }
-  else{
-    alert('just login, man.')
+}
+
+reviewSubmitHandler = (e, reviewObj) => {
+  e.preventDefault();
+  if (localStorage.getItem("token")) {
+    let token = localStorage.getItem("token");
+    let option = {
+      method: 'POST',
+      headers:{
+        'Content-Type': "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        review:{
+          yelp_id: this.state.establishment.id,
+          user_id:this.props.user.id,
+          name: reviewObj.name,
+          women_rating:reviewObj.women_rating,
+          poc_rating:reviewObj.poc_rating,
+          lgbtq_rating: reviewObj.lgbtq_rating,
+          review: reviewObj.review
+        }
+      })
+    }
+    fetch('http://localhost:3001/api/v1/reviews', option)
+      .then(res => res.json())
+      .then(data => this.setState({reviews: [...this.state.reviews, data]}))
+    }
+  else {
+    alert("Please Login to Submit a Review")
+    this.props.history.push("/")
   }
 }
 
   reviewToggle = () => {
     if (localStorage.getItem("token")){
       return(
-        <ReviewForm establishment={this.props.establishment} reviewSubmitHandler={this.props.reviewSubmitHandler}/>
+        <ReviewForm establishment={this.state.establishment} reviewSubmitHandler={this.reviewSubmitHandler}/>
       )
     }
     else{
@@ -49,19 +82,19 @@ class EstablishmentPage extends Component {
   }
 
   render() {
-    //console.log("we made it lads")
+    console.log(this.props.match.url)
 
-    console.log(this.props.establishment_reviews);
+    //console.log(this.props.establishment_reviews);
     //let establishment = JSON.parse(localStorage.getItem('establishment'))
 
     return (
       <div>
         <Nav changeHandler={this.props.changeHandler} submitHandler={this.props.submitHandler} term={this.props.search.term} location={this.props.search.location} />
 
-        <h1>{this.props.establishment.name}</h1>
-        <img src={this.props.establishment.image_url} alt="main"/>
+        <h1>{this.state.establishment.name}</h1>
+        <img src={this.state.establishment.image_url} alt="main"/>
         <h1>Reviews</h1>
-        <ReviewContainer reviews={this.props.establishment_reviews}/>
+        <ReviewContainer user={this.props.user} reviews={this.state.reviews}/>
 
         <Popup trigger={
             <div className="ui bottom attached button" onClick>

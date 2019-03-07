@@ -17,6 +17,7 @@ class ReviewForm extends Component {
   }
 
   render() {
+    
     return (
       <div>
         <h1>Add Review For {this.props.establishment.name}</h1>
@@ -35,6 +36,7 @@ class ReviewForm extends Component {
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
+            <option value="n/a">n/a</option>
           </select>
         </div>
 
@@ -46,6 +48,7 @@ class ReviewForm extends Component {
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
+            <option value="n/a">n/a</option>
           </select>
         </div>
 
@@ -57,6 +60,7 @@ class ReviewForm extends Component {
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
+            <option value="n/a">n/a</option>
           </select>
         </div>
 
