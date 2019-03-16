@@ -89,17 +89,17 @@ reviewSubmitHandler = (e, reviewObj) => {
       <div>
         <Nav changeHandler={this.props.changeHandler} submitHandler={this.props.submitHandler} term={this.props.search.term} location={this.props.search.location} />
 
+        <Popup trigger={
+          <div className="ui brown button" onClick>
+          <i className='add icon'></i> Add Review </div>} modal
+          position="right center">
+          <div>{this.reviewToggle()}</div>
+          </Popup>
         <img className="est-img" src={this.state.establishment.image_url} alt="main"/>
         <h1 className="est-name">{this.state.establishment.name}</h1>
         <div className="divider1"></div>
 
 
-        <Popup trigger={
-            <div className="ui bottom attached button" onClick>
-            <i className='add icon'></i> Add Review </div>} modal
-            position="right center">
-            <div>{this.reviewToggle()}</div>
-        </Popup>
         <h1 className="est-review-title">Reviews</h1>
         <div className="divider2"></div>
 

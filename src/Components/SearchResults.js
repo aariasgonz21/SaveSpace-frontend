@@ -17,9 +17,10 @@ class SearchResults extends Component {
         <h3 className="search-text pt3">
         {this.props.result.phone}</h3>
         <div className="search-rating-bar">
-          <h3 className="five wide column"><span className="search-rating">{this.props.result.poc}</span> POC Friendly</h3>
-          <h3 className="five wide column"><span className="search-rating">{this.props.result.women}</span> Women Friendly</h3>
-          <h3 className="five wide column"><span className="search-rating">{this.props.result.lgbtq}</span> LGBTQ Friendly</h3>
+          <h3 className="five wide column"><span className="search-rating">{
+          this.props.result.poc ? this.props.result.poc : 'n/a' }</span> POC Friendly</h3>
+          <h3 className="five wide column"><span className="search-rating">{this.props.result.women ? this.props.result.women : 'n/a'}</span> Women Friendly</h3>
+          <h3 className="five wide column"><span className="search-rating">{this.props.result.lgbtq ? this.props.result.lgbtq : 'n/a'}</span> LGBTQ Friendly</h3>
         </div>
       </div>
     );

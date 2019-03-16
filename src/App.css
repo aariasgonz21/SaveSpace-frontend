@@ -151,6 +151,7 @@ span{
 
 .link.review:hover {
   text-decoration: underline;
+  color:black;
 }
 
 .box{
@@ -274,7 +275,7 @@ h3.search-text.pt3{
 
 .est-img{
    width: 100%;
-   margin-top: 8em;
+   margin-top: 5em;
    height: 35em;
    object-fit: cover;
    opacity: 0.8;
@@ -315,9 +316,12 @@ h3.search-text.pt3{
   font-weight: 500;
 }
 
-.ui.bottom.attached.button{
-  width: 30%;
+.ui.brown.button{
+  width: 10%;
   float:right;
+  margin-right: 2em;
+  margin-bottom: -3em;
+  font-family: 'Avenir', sans-serif;
 }
 /* End of ESTABLISHMENT PAGE */
 

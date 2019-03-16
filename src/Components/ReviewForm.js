@@ -4,9 +4,9 @@ class ReviewForm extends Component {
 
   state={
     name: '',
-    women_rating: 0,
-    poc_rating: 0,
-    lgbtq_rating: 0,
+    women_rating: 1,
+    poc_rating: 1,
+    lgbtq_rating: 1,
     review: '',
   }
 
@@ -17,7 +17,7 @@ class ReviewForm extends Component {
   }
 
   render() {
-    
+
     return (
       <div>
         <h1>Add Review For {this.props.establishment.name}</h1>
