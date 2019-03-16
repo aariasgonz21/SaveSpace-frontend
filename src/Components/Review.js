@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Review = props => {
-
   return(
     <div className="review-container">
       <h1 className="username">{props.review.user.first_name}</h1>
