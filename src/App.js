@@ -77,9 +77,6 @@ class App extends Component {
   }
 
   //-------------------------------//
-
-
-  //-------------------------------//
   clickHandler = (e, searchObj) => {
     let id = searchObj.id
     let establishment = this.state.results.find(result => result.id === id)
