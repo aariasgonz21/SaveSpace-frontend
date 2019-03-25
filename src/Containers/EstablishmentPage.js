@@ -38,6 +38,7 @@ class EstablishmentPage extends Component {
 
 reviewSubmitHandler = (e, reviewObj) => {
   e.preventDefault();
+  console.log(reviewObj)
   if (localStorage.getItem("token")) {
     let token = localStorage.getItem("token");
     let option = {
@@ -49,6 +50,7 @@ reviewSubmitHandler = (e, reviewObj) => {
       body: JSON.stringify({
         review:{
           yelp_id: this.state.establishment.id,
+          establishment_name: reviewObj.establishment_name,
           user_id:this.props.user.id,
           name: reviewObj.name,
           women_rating:reviewObj.women_rating,
@@ -95,6 +97,7 @@ reviewSubmitHandler = (e, reviewObj) => {
           position="right center">
           <div>{this.reviewToggle()}</div>
           </Popup>
+
         <img className="est-img" src={this.state.establishment.image_url} alt="main"/>
         <h1 className="est-name">{this.state.establishment.name}</h1>
         <div className="divider1"></div>
@@ -103,9 +106,7 @@ reviewSubmitHandler = (e, reviewObj) => {
         <h1 className="est-review-title">Reviews</h1>
         <div className="divider2"></div>
 
-        <ReviewContainer user={this.props.user} reviews={this.state.reviews}/>
-
-
+        <ReviewContainer user={this.props.user} establishment={this.state.establishment} reviews={this.state.reviews}/>
       </div>
     );
   }

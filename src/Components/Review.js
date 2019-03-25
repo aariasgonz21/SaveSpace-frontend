@@ -1,9 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 const Review = props => {
+  console.log(props)
   return(
     <div className="review-container">
       <h1 className="username">{props.review.user.first_name}</h1>
+      <Link to={`/establishments/${props.review.yelp_id}`}>{props.review.establishment_name}</Link>
       <h2 className="review-title">"{props.review.name}"</h2>
       <div className="search-rating-bar rev-rate">
         <h3>Women Rating: {props.review.women_rating === 0 ? 'n/a' : props.review.women_rating}</h3>

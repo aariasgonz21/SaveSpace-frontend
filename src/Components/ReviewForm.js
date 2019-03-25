@@ -4,6 +4,7 @@ class ReviewForm extends Component {
 
   state={
     name: '',
+    establishment_name: this.props.establishment.name,
     women_rating: 1,
     poc_rating: 1,
     lgbtq_rating: 1,
@@ -17,15 +18,16 @@ class ReviewForm extends Component {
   }
 
   render() {
+    console.log(this.state.establishment_name)
 
     return (
       <div>
-        <h1>Add Review For {this.props.establishment.name}</h1>
+        <h1>Add Review For {this.state.establishment_name}</h1>
 
         <form className="ui form" onSubmit={(e) => {this.props.reviewSubmitHandler(e, this.state)}}>
         <div className="field">
-          <label className="form-labels">Name</label>
-          <input type="text" name="name" placeholder="Name" onChange={this.changeHandler}/>
+          <label className="form-labels">Review Title</label>
+          <input type="text" name="name" placeholder="Review Title" onChange={this.changeHandler}/>
         </div>
 
         <div className="field">

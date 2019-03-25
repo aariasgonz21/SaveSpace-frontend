@@ -63,7 +63,8 @@ class App extends Component {
      })
      .catch(console.error)
   }
-  //-------------------------------//
+  //-----------check persistData is needed anymore--------------------//
+
   persistData = (data) => {
     if(data.categories){
       this.setState({establishment:data})
