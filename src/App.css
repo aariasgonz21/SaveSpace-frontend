@@ -155,6 +155,7 @@ span{
   color:black;
 }
 
+
 .box{
   text-align: left;
   margin-left: 7em;
@@ -266,6 +267,14 @@ h3.search-text.pt3{
 
 /*ESTABLISHMENT PAGE*/
 
+.est-link{
+  font-family: 'Avenir', sans-serif;
+  color: #BE8140;
+  font-size: 2em;
+  font-weight: 600;
+  margin-left: 0.8em;
+}
+
 .est-img-container{
     width: 100%;
     height: 40em;
@@ -372,7 +381,7 @@ h3:last-child{
   font-family: 'Avenir', sans-serif;
   font-size: 2.5em;
   margin-left: 0.6em;
-  margin-bottom: -8px;
+  margin-bottom: 10px;
 }
 
 .review-title{

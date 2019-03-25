@@ -106,7 +106,7 @@ reviewSubmitHandler = (e, reviewObj) => {
         <h1 className="est-review-title">Reviews</h1>
         <div className="divider2"></div>
 
-        <ReviewContainer user={this.props.user} establishment={this.state.establishment} reviews={this.state.reviews}/>
+        <ReviewContainer user={this.props.user} reviews={this.state.reviews}/>
       </div>
     );
   }
