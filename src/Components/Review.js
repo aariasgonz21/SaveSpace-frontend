@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom'
 
 class Review extends Component {
   estName = () => {
-    //if(this.props.){
+    if(this.props.isProfile === true){
       return <Link className="est-link" to={`/establishments/${this.props.review.yelp_id}`}>{this.props.review.establishment_name}</Link>
-    //   }
-    // else{
-    //   return ""
-    // }
+    }
+    else{
+      return ""
+     }
   }
 
   render() {
