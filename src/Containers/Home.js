@@ -47,6 +47,7 @@ class Home extends Component {
       <div>
           {this.loginToggle()}
           <img className="home-background" src='../savespace-hands2.svg' alt="background-img"/>
+          <img className="info-btn" src="../question.svg" alt="?"/>
           <h1 className="main-title">SaveSpace<span id="nyc">nyc</span></h1>
 
           <div className="search">

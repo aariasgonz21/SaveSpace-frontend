@@ -58,7 +58,6 @@ class App extends Component {
     fetch('http://localhost:3001/api/v1/establishments', option)
     .then(res => res.json())
     .then(data => {
-      console.log("in submit handler");
       this.setState({results: data}, () => this.props.history.push('/search'))
      })
      .catch(console.error)
@@ -130,13 +129,21 @@ loginHandler = (e, userObj) => {
     })
   }
   fetch('http://localhost:3001/api/v1/login', option)
-  .then(res => res.json())
-  .then(data => {
-    this.setState({user: data.user})
-    this.setState({logged_in: true})
-    localStorage.setItem('token', data.jwt)
-    this.props.history.push(`/profile/${data.user.id}`)
-  })
+  .then(res => {
+    if (res.status < '401') {
+        res.json().then(data => {
+        this.setState({user: data.user})
+        this.setState({logged_in: true})
+        localStorage.setItem('token', data.jwt)
+        this.props.history.push(`/profile/${data.user.id}`)
+      })
+    } else {
+      console.log('dont be a hoe!!!')
+      res.json().then(json => console.log(json.message))
+    }}
+  )
+  .catch(console.error)
+
 }
 
 //-----------------------------//

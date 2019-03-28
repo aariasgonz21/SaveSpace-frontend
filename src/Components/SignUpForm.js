@@ -24,7 +24,7 @@ class SignUpForm extends Component {
             <div className="field">
               <label>First Name</label>
               <div className="ui left icon input">
-                <input type="text" value={this.state.first_name} name="first_name" onChange={ this.changeHandler}/>
+                <input type="text" value={this.state.first_name} name="first_name" onChange={ this.changeHandler} required/>
               </div>
             </div>
 
@@ -32,7 +32,7 @@ class SignUpForm extends Component {
               <label>Username</label>
               <div className="ui left icon input">
                 <input type="text" placeholder="Username" name="username" value={this.state.username}
-                onChange={ this.changeHandler}/>
+                onChange={ this.changeHandler} required/>
                 <i className="user icon"></i>
               </div>
             </div>
@@ -40,7 +40,7 @@ class SignUpForm extends Component {
             <div className="field">
               <label>Password</label>
               <div className="ui left icon input">
-                <input type="password" name="password" value={this.state.password} onChange={this.changeHandler}/>
+                <input type="password" name="password" value={this.state.password} onChange={this.changeHandler} required/>
                 <i className="lock icon"></i>
               </div>
             </div>

@@ -32,6 +32,11 @@
   float: right;
 }
 
+.info-btn{
+  width: 2.5%;
+  margin: 1em;
+}
+
 .login-btn:hover{
   text-decoration: underline;
 }

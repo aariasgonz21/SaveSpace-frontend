@@ -22,7 +22,7 @@ class LoginForm extends Component {
                 <label>Username</label>
                 <div className="ui left icon input">
                   <input type="text" name="username" placeholder="Username" value={this.state.username}
-                  onChange={this.changeHandler}/>
+                  onChange={this.changeHandler} required/>
                   <i className="user icon"></i>
                 </div>
               </div>
@@ -30,7 +30,7 @@ class LoginForm extends Component {
               <div className="field">
                 <label>Password</label>
                 <div className="ui left icon input">
-                  <input type="password" name="password" value={this.state.password} onChange={this.changeHandler}/>
+                  <input type="password" name="password" value={this.state.password} onChange={this.changeHandler} required/>
                   <i className="lock icon"></i>
                 </div>
               </div>

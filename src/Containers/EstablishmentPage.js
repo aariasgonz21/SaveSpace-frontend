@@ -19,7 +19,6 @@ class EstablishmentPage extends Component {
   }
 
   componentDidMount(){
-    console.log();
     if (localStorage.getItem("token")) {
       let token = localStorage.getItem("token");
         let options = {
@@ -32,7 +31,20 @@ class EstablishmentPage extends Component {
     .then(res => res.json())
     .then(data => {
       this.setState({establishment: data.establishment, reviews:
-        (data.reviews ? data.reviews : [])})
+        (data.reviews ? data.reviews : console.log(data))})
+    })
+  }
+  else {
+    let options = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    fetch(`http://localhost:3001/api/v1${this.props.match.url}`, options)
+    .then(res => res.json())
+    .then(data => {
+      this.setState({establishment: data.establishment, reviews:
+        (data.reviews ? data.reviews : console.log(data))})
     })
   }
 }
