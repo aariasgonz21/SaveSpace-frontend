@@ -15,7 +15,8 @@ class App extends Component {
     establishment:{},
     establishment_reviews:[],
     user: {},
-    logged_in: false
+    logged_in: false,
+    errorMsg: null
   }
 
   componentDidMount() {
@@ -138,12 +139,13 @@ loginHandler = (e, userObj) => {
         this.props.history.push(`/profile/${data.user.id}`)
       })
     } else {
-      console.log('dont be a hoe!!!')
-      res.json().then(json => console.log(json.message))
+      res.json().then(json => {
+        console.log(json.message)
+        this.setState({ errorMsg: json.message })
+      })
     }}
   )
   .catch(console.error)
-
 }
 
 //-----------------------------//
@@ -164,7 +166,8 @@ logoutHandler = () => {
             submitHandler={this.submitHandler}
             loginHandler={this.loginHandler}
             logoutHandler={this.logoutHandler}
-            signupHandler={this.signupHandler}/>} />
+            signupHandler={this.signupHandler}
+            errorMsg={this.state.errorMsg}/>} />
           <Route
             path="/profile"
             render={(props) => <ProfilePage {...props}

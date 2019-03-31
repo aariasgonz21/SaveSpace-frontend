@@ -37,6 +37,7 @@ class LoginForm extends Component {
 
               <button type="submit" className="ui blue submit button">Login</button>
           </form>
+          <div id="error msg" style={{color: 'red', textAlign: 'center'}}>{this.props.errorMsg}</div>
       </div>
     );
   }

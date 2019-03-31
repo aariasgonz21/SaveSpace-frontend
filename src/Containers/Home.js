@@ -28,7 +28,7 @@ class Home extends Component {
           <Popup trigger={
               <h3 className="login-btn" onClick> Login </h3>} modal
               position="right center">
-              <div>{<LoginForm changeHandler={this.props.changeHandler} loginHandler={this.props.loginHandler}/>}</div>
+              <div>{<LoginForm changeHandler={this.props.changeHandler} loginHandler={this.props.loginHandler} errorMsg={this.props.errorMsg}/>}</div>
           </Popup>
 
           <Popup trigger={
