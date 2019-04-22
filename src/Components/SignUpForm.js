@@ -18,7 +18,7 @@ class SignUpForm extends Component {
   render() {
     return (
       <div>
-        <h1>Sign Up Homie</h1>
+        <h1 className="rev-rate">Sign Up Homie</h1>
         <form className="ui form" onSubmit={(e) => {this.props.signupHandler(e, this.state)}}>
 
             <div className="field">

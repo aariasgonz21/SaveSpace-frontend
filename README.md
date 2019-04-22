@@ -1,68 +1,44 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#SaveSpace (Front-End)
 
-## Available Scripts
+A web application made to rate and review a location based on their inclusivity for women, people of color and the LGBTQ community.
 
-In the project directory, you can run:
+## About & History
 
-### `npm start`
+Have you ever felt uncomfortable or like you didn't belong at a certain establishment based on your gender, race or sexuality?
+SaveSpace was created with those experiences in mind.
+First created at Technica 2017, Redone in 2019.
 
-Runs the app in the development mode.<br>
+Created with a Ruby on Rails [Backend](https://github.com/aariasgonz21/SaveSpace-backend), scraping establishment data using the Yelp Fusion API in the backend, using React to create separate components for each page & functionality (Reviews, Ratings, Search, Establishment Pages, etc.), and Custom CSS + Semantic UI for styling.
+
+All ratings for a location are **averaged** based on all users ratings.
+
+## Features
+- Users can login or sign up and be directed to their profile page
+- Users can search for an establishment based on term and location within NYC
+- Users can view an establishment and other user reviews
+- Users must be logged in to rate and review an establishment
+- Users can view all their reviews from different establishments on their profile page
+
+## Made Using
+- React
+- Ruby on Rails
+- CSS
+- Semantic UI
+- Yelp Fusion API
+- React Popup Package
+- React Typist Package
+
+## Installation
+
+### `npm install` || `yarn install`
+
+Installs necessary packages to run application properly.
+
+### `npm start` || `yarn start`
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Note: Backend must run on localhost:3001**
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Screenshots
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Video Demo

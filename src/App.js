@@ -50,6 +50,7 @@ class App extends Component {
       method: 'POST',
       headers:{
         'content-type': "application/json",
+        'Accept' : "application/json"
       },
       body: JSON.stringify({
         term: this.state.term,

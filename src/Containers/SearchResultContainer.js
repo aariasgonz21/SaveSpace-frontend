@@ -24,7 +24,7 @@ class SearchResultContainer extends Component {
 
         <div className="search-container">
           <h1 className="title-text"> Search Results for <span className="term-name">{this.props.search.term}</span> in {this.props.search.location}</h1>
-          <div> {searchResults} </div>
+          <div className="search-results"> {searchResults} </div>
         </div>
 
       </React.Fragment>
