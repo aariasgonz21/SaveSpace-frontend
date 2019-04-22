@@ -43,21 +43,26 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ![Home](/public/SaveSpace-home-pic.png)
 
+---
 
 ![AboutUs](/public/savespace-about-us.png)
 
+---
 
 ![Profile](/public/savespace-profile.png)
 
+---
 
 ![Search](/public/savespace-search.png)
 
+---
 
 ![Establishment](/public/savespace-establishments.png)
 
+---
 
 ![Reviews](/public/savespace-reviews.png)
 
 ## Video Demo
 
-[Demo](https://www.youtube.com/watch?v=SfkfBJM-vpM&t=2s)
+**[Demo](https://www.youtube.com/watch?v=SfkfBJM-vpM&t=2s)**
