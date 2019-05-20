@@ -1,42 +1,36 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class SignUpForm extends Component {
+function SignUpForm(props){
+  const {firstName,
+  username,
+  password,
+  subObj,
+  fnChangeHandler,
+  unChangeHandler,
+  passChangeHandler} = useSignUpState();
 
-  state={
-    first_name: '',
-    username: '',
-    password: '',
-  }
-
-  changeHandler = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
-  render() {
     return (
       <div>
         <h1 className="rev-rate">Sign Up Homie</h1>
-        <form className="ui form" onSubmit={(e) => {this.props.signupHandler(e, this.state)}}>
+        <form className="ui form" onSubmit={(e) => {props.signupHandler(e, subObj)}}>
             <div className="field">
               <label>First Name</label>
               <div className="ui left icon input">
-                <input type="text" value={this.state.first_name} name="first_name" onChange={ this.changeHandler} required/>
+                <input type="text" value={firstName} name="first_name" onChange={fnChangeHandler} required/>
               </div>
             </div>
             <div className="field">
               <label>Username</label>
               <div className="ui left icon input">
-                <input type="text" placeholder="Username" name="username" value={this.state.username}
-                onChange={ this.changeHandler} required/>
+                <input type="text" placeholder="Username" name="username" value={username}
+                onChange={unChangeHandler} required/>
                 <i className="user icon"></i>
               </div>
             </div>
             <div className="field">
               <label>Password</label>
               <div className="ui left icon input">
-                <input type="password" name="password" value={this.state.password} onChange={this.changeHandler} required/>
+                <input type="password" name="password" value={password} onChange={passChangeHandler} required/>
                 <i className="lock icon"></i>
               </div>
             </div>
@@ -44,8 +38,28 @@ class SignUpForm extends Component {
         </form>
     </div>
     );
-  }
+}
 
+function useSignUpState(){
+
+  const [firstName, setFirstName] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const subObj = [firstName, username, password];
+
+  function fnChangeHandler(e){ setFirstName(e.target.value);}
+  function unChangeHandler(e) { setUsername(e.target.value);}
+  function passChangeHandler(e) { setPassword(e.target.value);}
+
+  return {
+    firstName,
+    username,
+    password,
+    subObj,
+    fnChangeHandler,
+    unChangeHandler,
+    passChangeHandler
+  };
 }
 
 export default SignUpForm;

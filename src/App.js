@@ -82,10 +82,9 @@ signupHandler = (e, signupObj) => {
     },
     body: JSON.stringify({
       user: {
-        first_name:signupObj.first_name,
-        username: signupObj.username,
-        password: signupObj.password,
-        bio: signupObj.bio,
+        first_name:signupObj[0],
+        username: signupObj[1],
+        password: signupObj[2]
       }
     })
   }
