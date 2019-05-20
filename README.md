@@ -8,7 +8,7 @@ Have you ever felt uncomfortable or like you didn't belong at a certain establis
 SaveSpace was created with those experiences in mind.
 First created at Technica 2017, Redone in 2019.
 
-Created with a Ruby on Rails [Backend](https://github.com/aariasgonz21/SaveSpace-backend), scraping establishment data using the Yelp Fusion API in the backend, using React to create separate components for each page & functionality (Reviews, Ratings, Search, Establishment Pages, etc.), and Custom CSS + Semantic UI for styling.
+Created with a Ruby on Rails [Backend](https://github.com/aariasgonz21/eau-de-hashgang-backend), scraping establishment data using the Yelp Fusion API in the backend, using React to create separate components for each page & functionality (Reviews, Ratings, Search, Establishment Pages, etc.), and Custom CSS + Semantic UI for styling.
 
 All ratings for a location are **averaged** based on all users ratings.
 

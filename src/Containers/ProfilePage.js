@@ -14,7 +14,6 @@ class ProfilePage extends Component {
   }
 
   componentDidMount(){
-    //console.log();
       let token = localStorage.getItem("token");
         let options = {
           headers: {
@@ -22,18 +21,14 @@ class ProfilePage extends Component {
             Authorization: `Bearer ${token}`
           }
         }
-
     fetch(`http://localhost:3001/api/v1${this.props.match.url}`, options)
     .then(res => res.json())
     .then(data => {
-      console.log(data)
-      this.props.persistData(data)
       this.setState({user: data.user, reviews: data.user_reviews})
     })
   }
-
+  
   render() {
-    console.log(this.state.reviews)
     return (
       <div>
         <Nav changeHandler={this.props.changeHandler} submitHandler={this.props.submitHandler} term={this.props.search.term} location={this.props.search.location} />

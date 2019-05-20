@@ -42,7 +42,6 @@ class App extends Component {
       [e.target.name]: e.target.value
     })
   }
-
   //-------------------------------//
   submitHandler = (e) => {
     e.preventDefault();
@@ -64,20 +63,6 @@ class App extends Component {
      })
      .catch(console.error)
   }
-  //-----------check persistData is needed anymore--------------------//
-
-  persistData = (data) => {
-    if(data.categories){
-      this.setState({establishment:data})
-    }
-    else if(data.review_text){
-      this.setState({establishment_reviews: data})
-    }
-    else if(data.bio){
-      this.setState({user:data})
-    }
-  }
-
   //-------------------------------//
   clickHandler = (e, searchObj) => {
     let id = searchObj.id
@@ -87,7 +72,6 @@ class App extends Component {
     })
     this.props.history.push(`/establishments/${establishment.id}`)
   }
-
 //-------------------------------//
 signupHandler = (e, signupObj) => {
   e.preventDefault();
@@ -114,7 +98,6 @@ signupHandler = (e, signupObj) => {
       this.props.history.push(`/profile/${data.user.id}`)
     })
 }
-
 //-----------------------------//
 loginHandler = (e, userObj) => {
   e.preventDefault();
@@ -148,12 +131,7 @@ loginHandler = (e, userObj) => {
   )
   .catch(console.error)
 }
-
 //-----------------------------//
-logoutHandler = () => {
-  localStorage.removeItem('token')
-  window.location.reload();
-}
 
   render() {
     return (
@@ -166,7 +144,6 @@ logoutHandler = () => {
             changeHandler={this.changeHandler}
             submitHandler={this.submitHandler}
             loginHandler={this.loginHandler}
-            logoutHandler={this.logoutHandler}
             signupHandler={this.signupHandler}
             errorMsg={this.state.errorMsg}/>} />
           <Route
@@ -174,16 +151,14 @@ logoutHandler = () => {
             render={(props) => <ProfilePage {...props}
             search={this.state}
             changeHandler={this.changeHandler}
-            submitHandler={this.submitHandler}
-            persistData={this.persistData}/>}/>
+            submitHandler={this.submitHandler}/>}/>
           <Route
             path="/search"
             render={(props) => <SearchResultContainer {...props}
             search={this.state}
             changeHandler={this.changeHandler}
             clickHandler={this.clickHandler}
-            submitHandler={this.submitHandler}
-            /> }/>
+            submitHandler={this.submitHandler}/> }/>
           <Route
             path="/establishments/:id"
             render={(props) => {
@@ -198,7 +173,5 @@ logoutHandler = () => {
       </div>
   );
 }
-    //<Route component={NoMatch} />
-    //localStorage.setItem("establishment", JSON.stringify(this.state.establishment)
 }
 export default withRouter(App);

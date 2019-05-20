@@ -1,8 +1,3 @@
-// Landing Page
-// we want to render
-// 1. Logo & login & sign up buttons
-// 2. SearchForm
-
 import React, { Component } from 'react';
 import SearchForm from '../Components/SearchForm'
 import LoginForm from '../Components/LoginForm'
@@ -13,28 +8,32 @@ import Typist from 'react-typist';
 
 class Home extends Component {
 
+  logoutHandler = () => {
+    localStorage.removeItem('token')
+    window.location.reload();
+  }
+
   loginToggle = () => {
     if (localStorage.getItem("token")){
       return(
         <div className="nav-buttons">
-          <h3 className="login-btn" onClick={this.props.logoutHandler}>Log Out</h3>
+          <h3 className="login-btn" onClick={this.logoutHandler}>Log Out</h3>
           <Link to="/profile" className="profile-btn">Your Profile</Link>
         </div>
       )
     }
     else {
       return(
-          <div className="nav-buttons">
+        <div className="nav-buttons">
           <Popup trigger={
               <h3 className="login-btn" onClick> Login </h3>} modal
               position="right center">
-              <div>{<LoginForm changeHandler={this.props.changeHandler} loginHandler={this.props.loginHandler} errorMsg={this.props.errorMsg}/>}</div>
+              <div>{<LoginForm loginHandler={this.props.loginHandler} errorMsg={this.props.errorMsg}/>}</div>
           </Popup>
-
           <Popup trigger={
               <h3 className="login-btn" onClick> Sign Up </h3>} modal
               position="right center">
-              <div>{<SignUpForm changeHandler={this.props.changeHandler} signupHandler={this.props.signupHandler}/>}</div>
+              <div>{<SignUpForm signupHandler={this.props.signupHandler}/>}</div>
           </Popup>
         </div>
       )
@@ -42,7 +41,6 @@ class Home extends Component {
   }
 
   render() {
-    //console.log(this.props.search.logged_in)
     return (
       <div className="home-bkgrnd">
           {this.loginToggle()}
@@ -54,7 +52,6 @@ class Home extends Component {
           </div>
 
           <div>
-
             <h3 className="home-prompt">When you want to:
             <span className="home-prompt-slide">
             <Typist>
@@ -78,18 +75,13 @@ class Home extends Component {
             <h2 className="about-title">This is the story of 3 women of color and their experience bar hopping in College Park, Maryland.</h2>
             <div className="about-p">
               <h3 className="about-p1">Ana, Chanel and Wuraola went to their first Technica and decided to go around the town and grab a beer. But each bar they passed by had a more unwelcoming vibe than the next. When they sat down the next day to decide on a project,</h3>
-
               <h3 className="about-p1"> Wura said, "What should we do our project on?".</h3>
-
-              <h3 className="about-p2">Chanel said, "We should make a project based on how we felt yesterday!"</h3>
-
+              <h3 className="about-p1">Chanel said, "We should make a project based on how we felt yesterday!"</h3>
               <h3 className="about-p3">Ana said, "Aha! Let's call it SaveSpace"</h3>
             </div>
           </div>
       </div>
     );
   }
-
 }
-
 export default Home;
